@@ -26,7 +26,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="faq-section" style={{ backgroundColor: 'var(--bg-elevated)', padding: '6rem 0' }}>
+    <section className="faq-section" style={{ backgroundColor: 'var(--bg-elevated)', padding: '3rem 0' }}>
       <div className="container" style={{ maxWidth: '800px' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

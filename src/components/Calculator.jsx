@@ -14,7 +14,7 @@ export default function Calculator() {
   const revenue = clients * price;
 
   return (
-    <section className="calculator-section" style={{ padding: '6rem 0' }}>
+    <section className="calculator-section" style={{ padding: '3rem 0' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

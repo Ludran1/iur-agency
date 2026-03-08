@@ -38,7 +38,7 @@ export default function ApplicationForm() {
   };
 
   return (
-    <section id="application-form" className="form-section" style={{ padding: '6rem 0' }}>
+    <section id="application-form" className="form-section" style={{ padding: '3rem 0' }}>
       <div className="container" style={{ maxWidth: '600px' }}>
         <motion.div
            initial={{ opacity: 0, y: 50 }}

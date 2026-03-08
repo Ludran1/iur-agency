@@ -23,7 +23,7 @@ export default function Products() {
   ];
 
   return (
-    <section className="products-section" style={{ backgroundColor: 'var(--bg-elevated)', padding: '6rem 0', position: 'relative' }}>
+    <section className="products-section" style={{ backgroundColor: 'var(--bg-elevated)', padding: '3rem 0', position: 'relative' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

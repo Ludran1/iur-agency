@@ -44,7 +44,7 @@ function App() {
       </main>
 
       <footer style={{
-        padding: '4rem 2rem',
+        padding: '1rem 2rem',
         textAlign: 'center',
         borderTop: '1px solid var(--border-light)',
         color: 'var(--text-muted)'

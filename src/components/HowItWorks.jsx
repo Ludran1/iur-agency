@@ -25,7 +25,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="how-it-works-section" style={{ padding: '6rem 0' }}>
+    <section className="how-it-works-section" style={{ padding: '3rem 0' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
