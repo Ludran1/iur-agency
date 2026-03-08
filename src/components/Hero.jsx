@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Dumbbell, Wrench, Play } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
@@ -156,41 +156,89 @@ export default function Hero() {
             }}
           >
             {/* Left side: FitGym */}
-            <div style={{
-              position: "relative",
-              padding: "2rem",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRight: "1px solid rgba(255, 255, 255, 0.1)",
-              background: "linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%)",
-            }}>
-              <div className="bg-glow" style={{ top: "0%", left: "0%", transform: "translate(-50%, -50%)", width: "300px", height: "300px", opacity: 0.3 }}></div>
-              <h3 style={{ fontSize: "1.5rem", color: "white", marginBottom: "0.5rem", zIndex: 2 }}>Sistema de Administración de Gimnasio</h3>
-              <p style={{ color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "0.875rem", zIndex: 2 }}>Módulo FitGym</p>
-              <button className="btn btn-secondary" style={{ zIndex: 2, padding: "0.5rem 1.5rem", fontSize: "0.875rem" }}>
-                Probrar
+            <motion.div 
+              whileHover={{ backgroundColor: "rgba(59, 130, 246, 0.08)" }}
+              style={{
+                position: "relative",
+                padding: "2rem",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRight: "1px solid rgba(255, 255, 255, 0.1)",
+                background: "linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, transparent 100%)",
+                transition: "background-color 0.3s ease",
+                cursor: "pointer"
+              }}
+            >
+              <div style={{ position: "absolute", top: "0%", left: "0%", transform: "translate(-50%, -50%)", width: "300px", height: "300px", background: "radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)", filter: "blur(40px)", pointerEvents: "none" }}></div>
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                style={{
+                  width: "64px",
+                  height: "64px",
+                  borderRadius: "50%",
+                  background: "rgba(59, 130, 246, 0.1)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "1.5rem",
+                  border: "1px solid rgba(59, 130, 246, 0.3)",
+                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.2)",
+                  zIndex: 2,
+                  color: "#3b82f6"
+                }}
+              >
+                <Dumbbell size={32} />
+              </motion.div>
+              <h3 style={{ fontSize: "1.5rem", color: "white", marginBottom: "0.5rem", zIndex: 2, textAlign: "center" }}>Sis. Admin de Gimnasio</h3>
+              <p style={{ color: "#93c5fd", marginBottom: "2rem", fontSize: "0.875rem", zIndex: 2, fontWeight: 500 }}>Módulo FitGym</p>
+              <button className="btn btn-primary" style={{ zIndex: 2, padding: "0.75rem 2rem", fontSize: "0.875rem", display: "flex", alignItems: "center", gap: "0.5rem", background: "#3b82f6", color: "white", border: "none" }}>
+                <Play size={16} fill="currentColor" /> Probar Demo
               </button>
-            </div>
+            </motion.div>
 
             {/* Right side: FerrePOS */}
-            <div style={{
-              position: "relative",
-              padding: "2rem",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              background: "linear-gradient(135deg, transparent 0%, rgba(139, 92, 246, 0.05) 100%)",
-            }}>
-              <div className="bg-glow-secondary" style={{ bottom: "0%", right: "0%", transform: "translate(50%, 50%)", width: "300px", height: "300px", opacity: 0.3 }}></div>
-              <h3 style={{ fontSize: "1.5rem", color: "white", marginBottom: "0.5rem", zIndex: 2 }}>Sistema para Ferretería</h3>
-              <p style={{ color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "0.875rem", zIndex: 2 }}>Módulo FerrePOS</p>
-              <button className="btn btn-secondary" style={{ zIndex: 2, padding: "0.5rem 1.5rem", fontSize: "0.875rem" }}>
-                Probrar
+            <motion.div 
+               whileHover={{ backgroundColor: "rgba(139, 92, 246, 0.08)" }}
+               style={{
+                position: "relative",
+                padding: "2rem",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                background: "linear-gradient(135deg, transparent 0%, rgba(139, 92, 246, 0.03) 100%)",
+                transition: "background-color 0.3s ease",
+                cursor: "pointer"
+              }}
+            >
+              <div style={{ position: "absolute", bottom: "0%", right: "0%", transform: "translate(50%, 50%)", width: "300px", height: "300px", background: "radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%)", filter: "blur(40px)", pointerEvents: "none" }}></div>
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                style={{
+                  width: "64px",
+                  height: "64px",
+                  borderRadius: "50%",
+                  background: "rgba(139, 92, 246, 0.1)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "1.5rem",
+                  border: "1px solid rgba(139, 92, 246, 0.3)",
+                  boxShadow: "0 0 20px rgba(139, 92, 246, 0.2)",
+                  zIndex: 2,
+                  color: "#8b5cf6"
+                }}
+              >
+                <Wrench size={32} />
+              </motion.div>
+              <h3 style={{ fontSize: "1.5rem", color: "white", marginBottom: "0.5rem", zIndex: 2, textAlign: "center" }}>Sis. Admin Ferretería</h3>
+              <p style={{ color: "#c4b5fd", marginBottom: "2rem", fontSize: "0.875rem", zIndex: 2, fontWeight: 500 }}>Módulo FerrePOS</p>
+              <button className="btn btn-primary" style={{ zIndex: 2, padding: "0.75rem 2rem", fontSize: "0.875rem", display: "flex", alignItems: "center", gap: "0.5rem", background: "#8b5cf6", color: "white", border: "none" }}>
+                <Play size={16} fill="currentColor" /> Probar Demo
               </button>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </motion.div>
