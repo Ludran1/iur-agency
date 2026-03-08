@@ -148,21 +148,49 @@ export default function Hero() {
             style={{
               height: "400px",
               borderRadius: "var(--radius-md)",
-              background:
-                "linear-gradient(145deg, rgba(20, 20, 22, 0.8) 0%, rgba(10, 10, 12, 0.9) 100%)",
+              background: "rgba(10, 10, 12, 0.9)",
               border: "1px solid rgba(255, 255, 255, 0.05)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "var(--text-muted)",
-              position: "relative",
-              overflow: "hidden"
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              overflow: "hidden",
             }}
           >
-            <div className="bg-glow-secondary" style={{ top: "30%", left: "40%", transform: "translate(-50%, -50%)", width: "300px", height: "300px", opacity: 0.5 }}></div>
-            <span style={{ position: "relative", zIndex: 2, fontWeight: 500, letterSpacing: "1px", textTransform: "uppercase", fontSize: "0.875rem" }}>
-              [Muestra interactiva de la interfaz de marca blanca]
-            </span>
+            {/* Left side: FitGym */}
+            <div style={{
+              position: "relative",
+              padding: "2rem",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRight: "1px solid rgba(255, 255, 255, 0.1)",
+              background: "linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%)",
+            }}>
+              <div className="bg-glow" style={{ top: "0%", left: "0%", transform: "translate(-50%, -50%)", width: "300px", height: "300px", opacity: 0.3 }}></div>
+              <h3 style={{ fontSize: "1.5rem", color: "white", marginBottom: "0.5rem", zIndex: 2 }}>Sistema de Administración de Gimnasio</h3>
+              <p style={{ color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "0.875rem", zIndex: 2 }}>Módulo FitGym</p>
+              <button className="btn btn-secondary" style={{ zIndex: 2, padding: "0.5rem 1.5rem", fontSize: "0.875rem" }}>
+                Probrar
+              </button>
+            </div>
+
+            {/* Right side: FerrePOS */}
+            <div style={{
+              position: "relative",
+              padding: "2rem",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              background: "linear-gradient(135deg, transparent 0%, rgba(139, 92, 246, 0.05) 100%)",
+            }}>
+              <div className="bg-glow-secondary" style={{ bottom: "0%", right: "0%", transform: "translate(50%, 50%)", width: "300px", height: "300px", opacity: 0.3 }}></div>
+              <h3 style={{ fontSize: "1.5rem", color: "white", marginBottom: "0.5rem", zIndex: 2 }}>Sistema para Ferretería</h3>
+              <p style={{ color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "0.875rem", zIndex: 2 }}>Módulo FerrePOS</p>
+              <button className="btn btn-secondary" style={{ zIndex: 2, padding: "0.5rem 1.5rem", fontSize: "0.875rem" }}>
+                Probrar
+              </button>
+            </div>
           </div>
         </motion.div>
       </motion.div>
