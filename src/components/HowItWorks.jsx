@@ -1,4 +1,6 @@
 import { ShoppingCart, Settings, Rocket } from 'lucide-react';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 
 export default function HowItWorks() {
   const steps = [
@@ -25,14 +27,35 @@ export default function HowItWorks() {
   return (
     <section className="how-it-works-section" style={{ padding: '6rem 0' }}>
       <div className="container">
-        <div className="text-center mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
+        >
           <h2 className="section-title">¿Cómo funciona?</h2>
           <p className="section-subtitle">
             Un proceso de 3 pasos extremadamente simple para que empieces hoy mismo.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-3 gap-8" style={{ position: 'relative' }}>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.3
+              }
+            }
+          }}
+          className="grid grid-cols-3 gap-8"
+          style={{ position: 'relative' }}
+        >
           {/* Connecting line for desktop */}
           <div style={{
             position: 'absolute',
@@ -46,14 +69,21 @@ export default function HowItWorks() {
           }} className="hidden md:block"></div>
 
           {steps.map((step, index) => (
-            <div key={index} style={{ 
-              position: 'relative', 
-              zIndex: 1, 
-              display: 'flex', 
-              flexDirection: 'column', 
-              alignItems: 'center', 
-              textAlign: 'center' 
-            }}>
+            <motion.div
+              key={index}
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 60 } }
+              }}
+              style={{ 
+                position: 'relative', 
+                zIndex: 1, 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center', 
+                textAlign: 'center' 
+              }}
+            >
               <div style={{
                 width: '96px',
                 height: '96px',
@@ -89,9 +119,9 @@ export default function HowItWorks() {
               </div>
               <h3 className="mb-2" style={{ fontSize: '1.5rem' }}>{step.title}</h3>
               <p style={{ color: 'var(--text-secondary)', maxWidth: '280px' }}>{step.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

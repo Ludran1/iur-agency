@@ -1,4 +1,6 @@
 import { Server, Paintbrush, TrendingUp } from 'lucide-react';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 
 export default function Benefits() {
   const benefits = [
@@ -22,16 +24,43 @@ export default function Benefits() {
   return (
     <section className="benefits-section" style={{ position: 'relative', padding: '6rem 0' }}>
       <div className="container">
-        <div className="text-center mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
+        >
           <h2 className="section-title">¿Por qué el <span className="text-gradient">Modelo Marca Blanca?</span></h2>
           <p className="section-subtitle">
             Concéntrate en vender y escalar sin preocuparte por la tecnología.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-3 gap-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2
+              }
+            }
+          }}
+          className="grid grid-cols-3 gap-8"
+        >
           {benefits.map((b, index) => (
-            <div key={index} className="glass-card">
+            <motion.div
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } }
+              }}
+              className="glass-card"
+            >
               <div style={{ 
                 width: '64px', 
                 height: '64px', 
@@ -47,9 +76,9 @@ export default function Benefits() {
               </div>
               <h3 className="mb-2" style={{ fontSize: '1.5rem' }}>{b.title}</h3>
               <p style={{ color: 'var(--text-secondary)' }}>{b.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

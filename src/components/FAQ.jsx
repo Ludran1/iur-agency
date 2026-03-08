@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+// eslint-disable-next-line no-unused-vars
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -26,24 +28,43 @@ export default function FAQ() {
   return (
     <section className="faq-section" style={{ backgroundColor: 'var(--bg-elevated)', padding: '6rem 0' }}>
       <div className="container" style={{ maxWidth: '800px' }}>
-        <div className="text-center mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
+        >
           <h2 className="section-title">Preguntas Frecuentes</h2>
           <p className="section-subtitle">Resolvemos todas tus dudas sobre el programa.</p>
-        </div>
+        </motion.div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+        >
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             
             return (
-              <div 
+              <motion.div 
                 key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
                 style={{
                   background: 'var(--bg-surface)',
                   border: `1px solid ${isOpen ? 'var(--accent-primary)' : 'var(--border-light)'}`,
                   borderRadius: 'var(--radius-md)',
                   overflow: 'hidden',
-                  transition: 'all 0.3s ease'
+                  transition: 'border-color 0.3s ease'
                 }}
               >
                 <button
@@ -75,21 +96,29 @@ export default function FAQ() {
                   />
                 </button>
                 
-                <div style={{
-                  maxHeight: isOpen ? '200px' : '0',
-                  opacity: isOpen ? 1 : 0,
-                  overflow: 'hidden',
-                  transition: 'all 0.3s ease-in-out',
-                  padding: isOpen ? '0 1.5rem 1.5rem' : '0 1.5rem',
-                  color: 'var(--text-secondary)',
-                  lineHeight: 1.6
-                }}>
-                  {faq.answer}
-                </div>
-              </div>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <div style={{
+                        padding: '0 1.5rem 1.5rem',
+                        color: 'var(--text-secondary)',
+                        lineHeight: 1.6
+                      }}>
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 
 export default function ApplicationForm() {
   const [formData, setFormData] = useState({
@@ -38,13 +40,19 @@ export default function ApplicationForm() {
   return (
     <section id="application-form" className="form-section" style={{ padding: '6rem 0' }}>
       <div className="container" style={{ maxWidth: '600px' }}>
-        <div style={{
-          background: 'linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-elevated) 100%)',
-          borderRadius: 'var(--radius-lg)',
-          padding: '3rem',
-          border: '1px solid var(--border-strong)',
-          boxShadow: '0 20px 40px rgba(0,0,0,0.6)'
-        }}>
+        <motion.div
+           initial={{ opacity: 0, y: 50 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true, margin: "-100px" }}
+           transition={{ duration: 0.8 }}
+           style={{
+            background: 'linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-elevated) 100%)',
+            borderRadius: 'var(--radius-lg)',
+            padding: '3rem',
+            border: '1px solid var(--border-strong)',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.6)'
+          }}
+        >
           {submitted ? (
             <div className="text-center" style={{ animation: 'fadeIn 0.5s ease' }}>
               <div style={{ 
@@ -162,7 +170,7 @@ export default function ApplicationForm() {
               </form>
             </>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

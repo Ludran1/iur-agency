@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Calculator as CalcIcon } from 'lucide-react';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 
 export default function Calculator() {
   const [clients, setClients] = useState(10);
@@ -14,15 +16,21 @@ export default function Calculator() {
   return (
     <section className="calculator-section" style={{ padding: '6rem 0' }}>
       <div className="container">
-        <div style={{
-          background: 'linear-gradient(145deg, var(--bg-surface) 0%, rgba(20,20,22,1) 100%)',
-          borderRadius: 'var(--radius-lg)',
-          border: '1px solid var(--border-strong)',
-          padding: '4rem',
-          position: 'relative',
-          overflow: 'hidden',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-        }}>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, type: "spring", bounce: 0.3 }}
+          style={{
+            background: 'linear-gradient(145deg, var(--bg-surface) 0%, rgba(20,20,22,1) 100%)',
+            borderRadius: 'var(--radius-lg)',
+            border: '1px solid var(--border-strong)',
+            padding: '4rem',
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+          }}
+        >
           {/* Subtle background glow inside the card */}
           <div style={{
             position: 'absolute',
@@ -129,7 +137,7 @@ export default function Calculator() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import { Dumbbell, Wrench } from 'lucide-react';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 
 export default function Products() {
   const products = [
@@ -23,21 +25,35 @@ export default function Products() {
   return (
     <section className="products-section" style={{ backgroundColor: 'var(--bg-elevated)', padding: '6rem 0', position: 'relative' }}>
       <div className="container">
-        <div className="text-center mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
+        >
           <h2 className="section-title">El Catálogo: <br/><span style={{ color: 'var(--text-secondary)' }}>Tus "Productos en Caja"</span></h2>
           <p className="section-subtitle">
             Sistemas probados y listos para ser distribuidos bajo tu propia marca.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-2 gap-8">
-          {products.map((product) => (
-            <div key={product.id} className="glass-card" style={{ 
-              display: 'flex', 
-              flexDirection: 'column',
-              background: 'linear-gradient(180deg, rgba(30,30,35,0.8) 0%, rgba(20,20,22,0.9) 100%)',
-              borderTop: `2px solid ${product.color}`
-            }}>
+          {products.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="glass-card"
+              style={{ 
+                display: 'flex', 
+                flexDirection: 'column',
+                background: 'linear-gradient(180deg, rgba(30,30,35,0.8) 0%, rgba(20,20,22,0.9) 100%)',
+                borderTop: `2px solid ${product.color}`
+              }}
+            >
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{
                   width: '48px',
@@ -76,7 +92,7 @@ export default function Products() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
